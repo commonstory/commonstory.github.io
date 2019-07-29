@@ -89,12 +89,10 @@ $(document).ready(function(){
             contentType: "application/json;charset=utf-8",
             type: method,
             beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Bearer f9f53dcf78d2d3b2c7cf70abb3432c513301cf34');
+                xhr.setRequestHeader('Authorization', `Bearer ${atob("OTI3NTJkZTg5ZTkzY2I0ZDZjYWJkZGVlNjM5N2UyZWQzZjAxNDU0Nw==")}`);
             },
             url: gistUrl + url,
             data: data
           });
     }
 });
-//f9f53dcf78d2d3b2c7cf70abb3432c513301cf34
-//https://gist.github.com/commonstory/11ffc484e15a89d090adc9da568e063d
