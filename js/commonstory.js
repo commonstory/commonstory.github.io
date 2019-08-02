@@ -4,6 +4,13 @@ $(document).ready(function(){
     let storyChoise2 = $('#story_choise2');
     let storyBtnChoise1 = $('#story_btn_choise1');
     let storyBtnChoise2 = $('#story_btn_choise2');
+    let chatContent = $('#chat_content');
+    let chatText = $('#chat_content pre');
+    let chatInput = $('.chat_container input');
+    let chatCaption = $('.chat_container span');
+    let chatGist = "8235c4cc0815b431257f01924d18f451";
+    var lastPoll = 0;
+    var chatBuffer = "";
     let choises = [
         {
             obj: storyChoise1,
@@ -41,6 +48,84 @@ $(document).ready(function(){
     storyBtnChoise2.click(() => {
         onClick(storyChoise2);
     });
+
+    chatInput.keypress(function(e) {
+        if(e.which === 13) {
+            updateChatContent(chatInput.val());
+            chatInput.val("");
+        }
+    });
+
+    // set nickname
+    var getUsername = () =>  getCookie("username");
+
+    //set chat caption
+    if( getUsername() === undefined){
+        // generateUsername
+        $.get( "https://frightanic.com/goodies_content/docker-names.php", data => {
+            var caption = chatCaption.text();
+            var newCaption = setChatCaption(data);
+            document.cookie = `username = ${newCaption.substring(caption.length + 2, newCaption.length - 1)}`;
+            //fallback
+            if( getUsername() === undefined){
+                getUsername = () => "unknown_bobo";
+                chatCaption.text(`${caption} ( ${getUsername()})`);
+            }
+        });
+    }else{
+        setChatCaption(getUsername());
+    }
+
+    setInterval(() => {
+        pullChatContent();
+        updateChatContent();
+    }, 3000);
+
+
+    function setChatCaption(username) {
+        chatCaption.text(`${chatCaption.text()} ( ${username})`);
+        return chatCaption.text();
+    }
+
+    function getCookie(name) {
+        var parts = `; ${decodeURIComponent(document.cookie)}`.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    function updateChatContent(newRecords = ""){
+        if(newRecords.length > 0){
+            let chatRecord = `${getUsername()}: ${newRecords}`;
+            sendReq(chatGist, "PATCH", `{"files":{"chat.txt":{"content":"${chatRecord}"}}}`);
+                if(chatBuffer === ""){
+                    chatBuffer = chatText.text();
+                }
+            chatText.append(document.createTextNode(`${chatRecord}\n`));
+        }
+        chatContent.scrollTop(chatContent.prop("scrollHeight"));
+    }
+
+    function pullChatContent(){
+        sendReq(`${chatGist}/commits?page=1&per_page=10`)
+                .done(commits => {
+                    let [ lastCommmit = { committed_at: "2011-06-20T11:34:15Z" } ] = commits;
+                    let lastCommmitTime = Date.parse(lastCommmit.committed_at);
+                    if( lastCommmitTime > lastPoll){
+                        let promiseChatHistory = 
+                            commits.filter( commit => Date.parse(commit.committed_at) > lastPoll )
+                                .reverse()
+                                .map( commit => $.get(`https://gist.githubusercontent.com/commonstory/${chatGist}/raw/${commit.version}/chat.txt`));
+                        $.when.apply(null, promiseChatHistory).then((...arguments)=>{
+                            if(chatBuffer !== ""){
+                                chatText.text(chatBuffer);
+                                chatBuffer="";
+                            }
+                            let records = Array.isArray(arguments[0]) ? arguments : [[arguments[0]]];
+                            records.forEach(record =>  chatText.append(document.createTextNode(`${record[0]}\n`)));
+                        });
+                        lastPoll = lastCommmitTime;
+                    }
+                });
+    }
 
     function onClick(selectedChoise){
         storyBtnChoise1.off( "mouseenter mouseleave click" );

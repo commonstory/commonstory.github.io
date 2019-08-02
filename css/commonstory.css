@@ -33,14 +33,55 @@
     width: 100%;    
 }
 
-#thanks {
-    margin-top: 20px;    
-    display: none;
-    font-style: italic;
-    font-weight: bold;
+.story_choise div {
     font-size: 18px;
     color: black;
     text-align: center;
+}
+
+.chat_container {
+    width: 300px;   
+    padding: 5px;
+    background: white;
+    border-color: green;
+    position: absolute;
+    top: 0px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    height: 20px;
+    transition: all .5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#chat_content {
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+#chat_content pre {
+    white-space: pre-wrap;
+}
+
+.chat_container input {
+    width: 100%;
+    margin-bottom: 8px;
+    margin-top: 8px; 
+}
+
+.chat_container:hover {
+    height: 300px;
+}
+
+#thanks {
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;    
+    display: none;
 }
 
 #story_btn_choise1 {
