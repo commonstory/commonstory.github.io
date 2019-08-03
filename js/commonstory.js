@@ -6,6 +6,7 @@ $(document).ready(function(){
     let storyBtnChoise2 = $('#story_btn_choise2');
     let chatContent = $('#chat_content');
     let chatText = $('#chat_content pre');
+    let chatContainer = $('.chat_container');
     let chatInput = $('.chat_container input');
     let chatCaption = $('.chat_container span');
     let chatGist = "8235c4cc0815b431257f01924d18f451";
@@ -47,6 +48,11 @@ $(document).ready(function(){
 
     storyBtnChoise2.click(() => {
         onClick(storyChoise2);
+    });
+
+    chatCaption.click(() => {
+        let newHeight = chatContainer.height() == 20 ? 300 : 20;
+        chatContainer.height(newHeight);
     });
 
     chatInput.keypress(function(e) {

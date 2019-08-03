@@ -82,6 +82,10 @@
     margin-top: 8px; 
 }
 
+.chat_container span {
+    cursor: pointer; 
+}
+
 .chat_container:hover {
     height: 300px;
 }
