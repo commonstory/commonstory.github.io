@@ -78,7 +78,6 @@ $(document).ready(function(){
 
     setInterval(() => {
         pullChatContent();
-        updateChatContent();
     }, 3000);
 
 
@@ -121,6 +120,7 @@ $(document).ready(function(){
                             }
                             let records = Array.isArray(arguments[0]) ? arguments : [[arguments[0]]];
                             records.forEach(record =>  chatText.append(document.createTextNode(`${record[0]}\n`)));
+                            updateChatContent();
                         });
                         lastPoll = lastCommmitTime;
                     }
