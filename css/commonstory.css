@@ -2,15 +2,17 @@
     margin: auto;
     display: flex;
     width: 90%;
+    height: 100%;
 }
 
 .story_img {
+    max-width: 901;
     min-width: 901;
-    min-height: 811;
 }
 .story_img img{
     display: none;
     position: relative;
+    max-height: 100%;
 }
 
 .story_choise {
