@@ -10,7 +10,7 @@ $(document).ready(function(){
     let chatCaption = $('.chat_container span');
     let chatGist = "8235c4cc0815b431257f01924d18f451";
     var lastPoll = 0;
-    var chatBuffer = "";
+    var chatBuffer = "...\n";
     let choises = [
         {
             obj: storyChoise1,

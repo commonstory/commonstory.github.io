@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: center;
     width: 500px;
+    position: relative;
 }
 
 .story_choise button {
@@ -42,7 +43,7 @@
 }
 
 .chat_container {
-    width: 300px;   
+    width: 100%;   
     padding: 5px;
     background: white;
     border-color: green;
