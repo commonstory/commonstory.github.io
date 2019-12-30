@@ -1,25 +1,34 @@
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/commonstory.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="js/commonstory.js"></script>
-    </head>
-    <body>
-        <div class="story_container">
-            <div class="story_img">
-                <img id="story_choise1" src="img/dude_with_beard1.png">
-                <img id="story_choise2" src="img/dude.png"> 
-            </div>
-            <div  class="story_choise">
-                <div class="chat_container">
-                    <span>Chat</span>
-                    <div id="chat_content"><pre>Loading...</pre></div>
-                    <input type='text' placeholder="Type message and hit Enter">
-                </div>
-                <button id="story_btn_choise1" type="button"></button>
-                <button id="story_btn_choise2" type="button"></button>
-                <div id="thanks">Thanks! Check back next week.</div>
-            </div>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/commonstory.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/commonstory.js"></script>
+</head>
+
+<body>
+    <div class="story_container">
+        <div class="story_img">
+            <iframe id="story_choise1"
+                src="http://docs.google.com/gview?url=https://github.com/vyaslav/vyaslav.github.io/raw/master/spark_overview.pdf&embedded=true"
+                frameborder="0">
+            </iframe>
+            <!--<img id="story_choise1" src="img/dude_with_beard1.png">
+                <img id="story_choise2" src="img/dude.png"> -->
         </div>
-    </body>
+        <div class="story_choise">
+            <div class="chat_container">
+                <span>Chat</span>
+                <div id="chat_content">
+                    <pre>Loading...</pre>
+                </div>
+                <input type='text' placeholder="Type message and hit Enter">
+            </div>
+            <button id="story_btn_choise1" type="button"></button>
+            <!--<button id="story_btn_choise2" type="button"></button>-->
+            <div id="thanks">Thanks! Check back next week.</div>
+        </div>
+    </div>
+</body>
+
 </html>
