@@ -71,7 +71,7 @@ $(document).ready(function () {
         $.get("https://frightanic.com/goodies_content/docker-names.php", data => {
             var caption = chatCaption.text();
             var newCaption = setChatCaption(data);
-            document.cookie = `username = ${data}`;
+            document.cookie = `username=${data}`;
             //fallback
             if (getUsername() === undefined) {
                 getUsername = () => "unknown_bobo";
