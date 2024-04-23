@@ -60,6 +60,22 @@
     flex-direction: column;
     overflow: hidden;
 }
+
+.status_container {
+    width: 100%;   
+    padding: 5px;
+    background: white;
+    border-color: green;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 #chat_content {
     height: 100%;
     width: 100%;
