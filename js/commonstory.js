@@ -86,6 +86,7 @@ $(document).ready(function () {
 
     setInterval(() => {
         pullChatContent();
+        pullScreenContent();
     }, 3000);
 
 
