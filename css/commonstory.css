@@ -70,7 +70,8 @@
     border-radius: 20px;
     border-width: 2px;
     border-style: solid;
-    height: 300px;
+    /* height: 300px; */
+    font-size: xx-large;
     display: flex;
     flex-direction: column;
     overflow: hidden;
