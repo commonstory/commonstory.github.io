@@ -34,13 +34,15 @@
     color: white;
     padding: 15px 25px;
     text-align: center;
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: x-large;
     cursor: pointer;
     width: 100%;    
 }
 
 .story_choise div {
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: xx-large;
     color: black;
     text-align: center;
 }
@@ -71,7 +73,7 @@
     border-width: 2px;
     border-style: solid;
     /* height: 300px; */
-    font-size: xx-large;
+    /* font-size: xx-large; */
     display: flex;
     flex-direction: column;
     overflow: hidden;
