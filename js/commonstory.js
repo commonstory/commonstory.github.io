@@ -11,7 +11,7 @@ $(document).ready(function () {
     let chatInput = $('.chat_container input');
     let chatCaption = $('.chat_container span');
     let chatGist = "8235c4cc0815b431257f01924d18f451";
-    let screenGist = "6979afb2110c68127a2826c16ed63005";
+    let screenGist = "0a30ec4875ca5fb5238251b77bcc3346";
     var lastPoll = 0;
     var chatBuffer = "...\n";
     let choises = [
@@ -137,10 +137,12 @@ $(document).ready(function () {
     }
 
     function pullScreenContent() {
-        sendReq(`${screenGist}`)
-            .done(gist => {
-                let file = gist.files["kidscreenlock.db"];
-                $.get(file.raw_url, (data) => statusContainer.text(data))
+        //{gist_id}/comments/{comment_id}
+        sendReq(`${screenGist}/comments/5042924`)
+            .done(comment => {
+                statusContainer.text(comment.body);
+                // let file = gist.files["kidscreenlock.db"];
+                // $.get(file.raw_url, (data) => statusContainer.text(data))
             });
     }
 
