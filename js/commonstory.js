@@ -34,6 +34,7 @@ $(document).ready(function () {
     ];
     // init
     showCounts();
+    pullScreenContent();
     // def
     storyBtnChoise1.hover(
         () => selectChoise(storyChoise1),
